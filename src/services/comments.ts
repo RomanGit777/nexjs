@@ -1,13 +1,20 @@
+import {IUser} from "@/models/IUser";
+import {IPost} from "@/models/IPost";
 import {IComments} from "@/models/IComments";
-import {baseUrl} from "@/services/base";
 
-export const getComments = async (): Promise<IComments[]> => {
-    const res = await fetch(baseUrl + "/comments", {cache: "no-store"});
-    if (!res.ok) throw new Error("Error: Could not fetch comments");
-    return res.json();
-}
-export const getComment = async (id: string): Promise<IComments> => {
-    const res = await fetch(baseUrl + "/comments/" + id);
-    if (!res.ok) throw new Error("Error: Could not fetch comment");
-    return res.json();
-}
+const BASE_URL = 'https://jsonplaceholder.typicode.com';
+
+export const getAllUsers = async (): Promise<IUser[]> => {
+    return await fetch(BASE_URL + '/users')
+        .then((response) => response.json())
+};
+
+export const getAllPosts = async (): Promise<IPost[]> => {
+    return await fetch(BASE_URL + '/posts')
+        .then((response) => response.json())
+};
+
+export const getAllComments = async (): Promise<IComments[]> => {
+    return await fetch(BASE_URL + '/comments')
+        .then((response) => response.json())
+};
