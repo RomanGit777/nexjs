@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Menu from "@/menu/page";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,6 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
       {children}
+      <Menu/>
       </body>
     </html>
   );
