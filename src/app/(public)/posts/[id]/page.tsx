@@ -1,11 +1,12 @@
 import {FC} from "react";
-import {parsePostFromSearchParams} from "@/services/parseDataFromSearchParams";
+import {parseDataFromSearchParams} from "@/services/parseDataFromSearchParams";
+import {IPost} from "@/models/IPost";
 type PostPageProps = {
     searchParams: Promise<Record<string, string>>;
 }
 const PostPage: FC<PostPageProps> = async ({searchParams}) => {
     const params = await searchParams;
-    const post = parsePostFromSearchParams(params)
+    const post: IPost | null = parseDataFromSearchParams(params)
 
     return (
         <div>
