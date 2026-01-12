@@ -1,19 +1,15 @@
 import {FC} from "react";
-import {SearchParams} from "next/dist/server/request/search-params";
-import {IPost} from "@/models/IPost";
+import {parsePostFromSearchParams} from "@/services/parseDataFromSearchParams";
 type PostPageProps = {
-    searchParams: Promise<SearchParams>;
+    searchParams: Promise<Record<string, string>>;
 }
 const PostPage: FC<PostPageProps> = async ({searchParams}) => {
-    const {data} = await searchParams;
-    let obj = null;
-    if (typeof data === 'string') {
-        obj = JSON.parse(data) as IPost;
-    }
+    const params = await searchParams;
+    const post = parsePostFromSearchParams(params)
 
     return (
         <div>
-            {obj && <div>{obj.id} {obj.title}</div> }
+            {post && <div>{post.id} {post.title}</div> }
         </div>
     );
 };

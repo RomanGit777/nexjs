@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {parseUserFromSearchParams} from "@/services/parseUserFromSearchParams";
+import {parseUserFromSearchParams} from "@/services/parseDataFromSearchParams";
 
 type Props = { searchParams: Promise<Record<string, string>> };
 const UserIdPage: FC<Props> = async ({searchParams}) => {
